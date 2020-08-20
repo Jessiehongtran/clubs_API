@@ -21,4 +21,24 @@ router.post('/', async (req,res) => {
     }
 })
 
+router.delete('/:clubId', async (req,res) => {
+    const clubId = req.params.clubId
+    try {
+        await Clubs.delete(clubId)
+        res.status(200).json({message: 'deleted 1 club'})
+    } catch (err){
+        res.status(500).json(err)
+    }
+})
+
+router.patch('/:clubId', async (req,res) => {
+    const clubId = req.params.clubId
+    const change = req.body
+    try {
+        await Clubs.update(clubId, change)
+        res.status(200).json({message: 'updated 1 club'})
+    } catch (err){
+        res.status(500).json(err)
+    }
+})
 module.exports = router;

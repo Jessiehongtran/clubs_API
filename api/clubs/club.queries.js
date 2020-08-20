@@ -9,5 +9,15 @@ module.exports = {
     },
     getAll: () => {
         return db("clubs")
+    },
+    delete: (clubId) => {
+        return db("clubs")
+                .where({id: clubId})
+                .del()
+    },
+    update: (clubId, change) => {
+        return db("clubs")
+                .where({id: clubId})
+                .update(change)
     }
 }
